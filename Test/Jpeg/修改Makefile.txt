@@ -1,0 +1,6 @@
+####### Build rules
+
+all: Makefile $(TARGET)
+
+$(TARGET):  $(OBJECTS) 
+        $(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS) -ljpeg

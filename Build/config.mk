@@ -1,0 +1,3 @@
+MARCH=HI35XX
+MCROSS=arm-hisiv200-linux-
+MDEVICE=DVR

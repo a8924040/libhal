@@ -1,0 +1,29 @@
+
+利用framebuffer显示图片：
+先安装jpegsrc.v6b.tar.gz软件包（就是交叉编译的方法）
+
+
+(2) jpeg-6b
+
+cd /home/work/armqt/qtlibsource/jpeg-6b
+./configure -enable-shared
+vi Makefile
+修改:
+CC= arm-linux-gcc
+AR= arm-linux-ar rc
+AR2=arm-linux-ranlib
+make
+make install  （这一步可能会出错，不去管它）
+
+
+编写应用程序，编译应用程序（要-ljpeg），得到执行文件，连同图片一起下载到板子，chmod +x之后 可运行
+
+(3)命令行编译gcc display.c -o display -ljpeg
+
+(4)Qt下第一次编译不会通过修改Makefile如下
+  ####### Build rules
+
+all: Makefile $(TARGET)
+
+$(TARGET):  $(OBJECTS) 
+        $(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS) -ljpeg
